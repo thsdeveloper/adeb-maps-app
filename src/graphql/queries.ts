@@ -30,6 +30,7 @@ export const GET_PLACES = gql`
       id
       name
       slug
+      ativo
       location {
         latitude
         longitude
@@ -51,6 +52,7 @@ export const GET_PLACE_BY_SLUG = gql`
       id
       name
       slug
+      ativo
       location {
         latitude
         longitude

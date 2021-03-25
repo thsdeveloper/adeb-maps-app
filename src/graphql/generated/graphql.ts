@@ -1612,6 +1612,8 @@ export type Place = Node & {
   location: Location;
   description?: Maybe<RichText>;
   gallery: Array<Asset>;
+  /** Se a igreja esta ativada */
+  ativo: Scalars['Boolean'];
   /** List of Place versions */
   history: Array<Version>;
 };
@@ -1670,6 +1672,7 @@ export type PlaceCreateInput = {
   location: LocationInput;
   description?: Maybe<Scalars['RichTextAST']>;
   gallery: AssetCreateManyInlineInput;
+  ativo: Scalars['Boolean'];
 };
 
 export type PlaceCreateManyInlineInput = {
@@ -1810,6 +1813,9 @@ export type PlaceManyWhereInput = {
   gallery_every?: Maybe<AssetWhereInput>;
   gallery_some?: Maybe<AssetWhereInput>;
   gallery_none?: Maybe<AssetWhereInput>;
+  ativo?: Maybe<Scalars['Boolean']>;
+  /** All values that are not equal to given value. */
+  ativo_not?: Maybe<Scalars['Boolean']>;
 };
 
 export enum PlaceOrderByInput {
@@ -1824,7 +1830,9 @@ export enum PlaceOrderByInput {
   NameAsc = 'name_ASC',
   NameDesc = 'name_DESC',
   SlugAsc = 'slug_ASC',
-  SlugDesc = 'slug_DESC'
+  SlugDesc = 'slug_DESC',
+  AtivoAsc = 'ativo_ASC',
+  AtivoDesc = 'ativo_DESC'
 }
 
 export type PlaceUpdateInput = {
@@ -1833,6 +1841,7 @@ export type PlaceUpdateInput = {
   location?: Maybe<LocationInput>;
   description?: Maybe<Scalars['RichTextAST']>;
   gallery?: Maybe<AssetUpdateManyInlineInput>;
+  ativo?: Maybe<Scalars['Boolean']>;
 };
 
 export type PlaceUpdateManyInlineInput = {
@@ -1855,6 +1864,7 @@ export type PlaceUpdateManyInlineInput = {
 export type PlaceUpdateManyInput = {
   name?: Maybe<Scalars['String']>;
   description?: Maybe<Scalars['RichTextAST']>;
+  ativo?: Maybe<Scalars['Boolean']>;
 };
 
 export type PlaceUpdateManyWithNestedWhereInput = {
@@ -2015,6 +2025,9 @@ export type PlaceWhereInput = {
   gallery_every?: Maybe<AssetWhereInput>;
   gallery_some?: Maybe<AssetWhereInput>;
   gallery_none?: Maybe<AssetWhereInput>;
+  ativo?: Maybe<Scalars['Boolean']>;
+  /** All values that are not equal to given value. */
+  ativo_not?: Maybe<Scalars['Boolean']>;
 };
 
 /** References Place record uniquely */
@@ -2392,7 +2405,7 @@ export type GetPlacesQuery = (
   { __typename?: 'Query' }
   & { places: Array<(
     { __typename?: 'Place' }
-    & Pick<Place, 'id' | 'name' | 'slug'>
+    & Pick<Place, 'id' | 'name' | 'slug' | 'ativo'>
     & { location: (
       { __typename?: 'Location' }
       & Pick<Location, 'latitude' | 'longitude'>
@@ -2415,7 +2428,7 @@ export type GetPlaceBySlugQuery = (
   { __typename?: 'Query' }
   & { place?: Maybe<(
     { __typename?: 'Place' }
-    & Pick<Place, 'id' | 'name' | 'slug'>
+    & Pick<Place, 'id' | 'name' | 'slug' | 'ativo'>
     & { location: (
       { __typename?: 'Location' }
       & Pick<Location, 'latitude' | 'longitude'>
