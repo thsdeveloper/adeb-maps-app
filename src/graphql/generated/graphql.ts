@@ -1614,6 +1614,8 @@ export type Place = Node & {
   gallery: Array<Asset>;
   /** Se a igreja esta ativada */
   ativo: Scalars['Boolean'];
+  /** Data de fundação da igreja */
+  date_foundation: Scalars['Date'];
   /** List of Place versions */
   history: Array<Version>;
 };
@@ -1673,6 +1675,7 @@ export type PlaceCreateInput = {
   description?: Maybe<Scalars['RichTextAST']>;
   gallery: AssetCreateManyInlineInput;
   ativo: Scalars['Boolean'];
+  date_foundation: Scalars['Date'];
 };
 
 export type PlaceCreateManyInlineInput = {
@@ -1816,6 +1819,21 @@ export type PlaceManyWhereInput = {
   ativo?: Maybe<Scalars['Boolean']>;
   /** All values that are not equal to given value. */
   ativo_not?: Maybe<Scalars['Boolean']>;
+  date_foundation?: Maybe<Scalars['Date']>;
+  /** All values that are not equal to given value. */
+  date_foundation_not?: Maybe<Scalars['Date']>;
+  /** All values that are contained in given list. */
+  date_foundation_in?: Maybe<Array<Scalars['Date']>>;
+  /** All values that are not contained in given list. */
+  date_foundation_not_in?: Maybe<Array<Scalars['Date']>>;
+  /** All values less than the given value. */
+  date_foundation_lt?: Maybe<Scalars['Date']>;
+  /** All values less than or equal the given value. */
+  date_foundation_lte?: Maybe<Scalars['Date']>;
+  /** All values greater than the given value. */
+  date_foundation_gt?: Maybe<Scalars['Date']>;
+  /** All values greater than or equal the given value. */
+  date_foundation_gte?: Maybe<Scalars['Date']>;
 };
 
 export enum PlaceOrderByInput {
@@ -1832,7 +1850,9 @@ export enum PlaceOrderByInput {
   SlugAsc = 'slug_ASC',
   SlugDesc = 'slug_DESC',
   AtivoAsc = 'ativo_ASC',
-  AtivoDesc = 'ativo_DESC'
+  AtivoDesc = 'ativo_DESC',
+  DateFoundationAsc = 'date_foundation_ASC',
+  DateFoundationDesc = 'date_foundation_DESC'
 }
 
 export type PlaceUpdateInput = {
@@ -1842,6 +1862,7 @@ export type PlaceUpdateInput = {
   description?: Maybe<Scalars['RichTextAST']>;
   gallery?: Maybe<AssetUpdateManyInlineInput>;
   ativo?: Maybe<Scalars['Boolean']>;
+  date_foundation?: Maybe<Scalars['Date']>;
 };
 
 export type PlaceUpdateManyInlineInput = {
@@ -1865,6 +1886,7 @@ export type PlaceUpdateManyInput = {
   name?: Maybe<Scalars['String']>;
   description?: Maybe<Scalars['RichTextAST']>;
   ativo?: Maybe<Scalars['Boolean']>;
+  date_foundation?: Maybe<Scalars['Date']>;
 };
 
 export type PlaceUpdateManyWithNestedWhereInput = {
@@ -2028,6 +2050,21 @@ export type PlaceWhereInput = {
   ativo?: Maybe<Scalars['Boolean']>;
   /** All values that are not equal to given value. */
   ativo_not?: Maybe<Scalars['Boolean']>;
+  date_foundation?: Maybe<Scalars['Date']>;
+  /** All values that are not equal to given value. */
+  date_foundation_not?: Maybe<Scalars['Date']>;
+  /** All values that are contained in given list. */
+  date_foundation_in?: Maybe<Array<Scalars['Date']>>;
+  /** All values that are not contained in given list. */
+  date_foundation_not_in?: Maybe<Array<Scalars['Date']>>;
+  /** All values less than the given value. */
+  date_foundation_lt?: Maybe<Scalars['Date']>;
+  /** All values less than or equal the given value. */
+  date_foundation_lte?: Maybe<Scalars['Date']>;
+  /** All values greater than the given value. */
+  date_foundation_gt?: Maybe<Scalars['Date']>;
+  /** All values greater than or equal the given value. */
+  date_foundation_gte?: Maybe<Scalars['Date']>;
 };
 
 /** References Place record uniquely */
@@ -2405,7 +2442,7 @@ export type GetPlacesQuery = (
   { __typename?: 'Query' }
   & { places: Array<(
     { __typename?: 'Place' }
-    & Pick<Place, 'id' | 'name' | 'slug' | 'ativo'>
+    & Pick<Place, 'id' | 'name' | 'slug' | 'ativo' | 'date_foundation'>
     & { location: (
       { __typename?: 'Location' }
       & Pick<Location, 'latitude' | 'longitude'>
@@ -2428,7 +2465,7 @@ export type GetPlaceBySlugQuery = (
   { __typename?: 'Query' }
   & { place?: Maybe<(
     { __typename?: 'Place' }
-    & Pick<Place, 'id' | 'name' | 'slug' | 'ativo'>
+    & Pick<Place, 'id' | 'name' | 'slug' | 'ativo' | 'date_foundation'>
     & { location: (
       { __typename?: 'Location' }
       & Pick<Location, 'latitude' | 'longitude'>

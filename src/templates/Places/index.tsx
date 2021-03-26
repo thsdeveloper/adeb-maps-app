@@ -4,6 +4,11 @@ import Image from 'next/image'
 import * as S from './style'
 import { useRouter } from 'next/router'
 import { NextSeo } from 'next-seo'
+import dynamic from 'next/dynamic'
+
+const Map = dynamic(() => import('components/Map'), {
+  ssr: false
+})
 
 export type ImageProps = {
   url: string
@@ -15,6 +20,12 @@ export type PlacesTemplateProps = {
   place: {
     slug: string
     name: string
+    ativo: boolean
+    date_foundation: string
+    location: {
+      latitude: string
+      longitude: string
+    }
     description: {
       html: string
       text: string
@@ -53,13 +64,15 @@ export default function PlacesTemplate({ place }: PlacesTemplateProps) {
           ]
         }}
       />
-      <LinkWrapper href="/">
+      <LinkWrapper href="/" color="white">
         <CloseOutline size={54} aria-label="Go back to map" />
       </LinkWrapper>
 
       <S.Wrapper>
         <S.Container>
           <S.Heading>{place.name}</S.Heading>
+          {place.location.longitude}
+          <div>Data de Fundação: {place.date_foundation}</div>
 
           <S.Body
             dangerouslySetInnerHTML={{ __html: place.description?.html || '' }}
