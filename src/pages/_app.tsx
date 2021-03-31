@@ -28,12 +28,19 @@ import InboxIcon from '@material-ui/icons/MoveToInbox'
 import MailIcon from '@material-ui/icons/Mail'
 import ListItemText from '@material-ui/core/ListItemText'
 import Drawer from '@material-ui/core/Drawer'
+import Button from '@material-ui/core/Button'
+import InfoIcon from '@material-ui/icons/Info'
+import Link from 'next/link'
+import { Tooltip } from '@material-ui/core'
 
 const drawerWidth = 300
 const useStyles = makeStyles((theme: Theme) =>
   createStyles({
     root: {
       display: 'flex'
+    },
+    title: {
+      flexGrow: 1
     },
     appBar: {
       transition: theme.transitions.create(['margin', 'width'], {
@@ -150,9 +157,24 @@ export default function App(props: AppProps) {
               >
                 <MenuIcon />
               </IconButton>
-              <Typography variant="h6" noWrap>
+              <Typography variant="h6" noWrap className={classes.title}>
                 Maps ADEBSystem 2.0
               </Typography>
+              <Link href="/about">
+                <Tooltip
+                  title="Saiba mais sobre o projeto ADEB Maps"
+                  aria-label="add"
+                  placement={'left'}
+                >
+                  <IconButton
+                    aria-label="show more"
+                    aria-haspopup="true"
+                    color="inherit"
+                  >
+                    <InfoIcon />
+                  </IconButton>
+                </Tooltip>
+              </Link>
             </Toolbar>
           </AppBar>
 
