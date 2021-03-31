@@ -1,8 +1,12 @@
 import dynamic from 'next/dynamic'
 import LinkWrapper from 'components/LinkWrapper'
 import { InfoOutline } from '@styled-icons/evaicons-outline/InfoOutline'
+import Button from '@material-ui/core/Button'
 import { MapProps } from 'components/Map'
 import { NextSeo } from 'next-seo'
+import Typography from '@material-ui/core/Typography'
+import Link from 'next/link'
+import { Container } from '@material-ui/core'
 
 const Map = dynamic(() => import('components/Map'), {
   ssr: false
@@ -10,33 +14,29 @@ const Map = dynamic(() => import('components/Map'), {
 
 export default function HomeTemplate({ places }: MapProps) {
   return (
-    <>
-      <NextSeo
-        title="Adebsystem - Mapa de Localização das Igrejas da ADEB Brasília"
-        description="Um simples aplicativo para listar de forma dinâmica as igrejas da ADEB Brasília"
-        canonical="https://maps.adebriachofundo.com.br"
-        openGraph={{
-          url: 'https://maps.adebriachofundo.com.br',
-          title: 'Adebsystem - Mapa de localização das igrejas',
-          description:
-            'Um simples aplicativo para geração de pontos de localização das igrejas da ADEB Brasília, listando os seus detalhes pernitentes.',
-          images: [
-            {
-              url: 'https://maps.adebriachofundo.com.br/img/cover.png',
-              width: 1280,
-              height: 720,
-              alt: 'Adebsystem - Mapas de localização das igrejas'
-            }
-          ],
-          site_name: 'Adebsystem - Mapas'
-        }}
-      />
+    <div>
+      <Container maxWidth="xl">
+        <Typography variant="h3">Mapas de Localização ADEB</Typography>
+        <Typography variant="subtitle1" color={'textSecondary'}>
+          Lorem Ipsum is simply dummy text of the printing and typesetting
+          industry. Lorem Ipsum has been the industry's standard dummy text ever
+          since the 1500s, when an unknown printer took a galley of type and
+          scrambled it to make a type specimen book. It has survived not only
+          five centuries, but also the leap into electronic typesetting,
+          remaining essentially unchanged. It was popularised in the 1960s with
+          the release of Letraset sheets containing Lorem Ipsum passages, and
+          more recently with desktop publishing software like Aldus PageMaker
+          including versions of Lorem Ipsum.
+        </Typography>
 
-      <LinkWrapper href="/about">
-        <InfoOutline size={54} aria-label="About" />
-      </LinkWrapper>
+        <Map places={places} />
 
-      <Map places={places} />
-    </>
+        <Link href="/about">
+          <Button component="a" variant="contained" color="primary">
+            Baiahkshagsjkh
+          </Button>
+        </Link>
+      </Container>
+    </div>
   )
 }
