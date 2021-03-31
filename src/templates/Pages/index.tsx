@@ -2,6 +2,8 @@ import { CloseOutline } from '@styled-icons/evaicons-outline/CloseOutline'
 import LinkWrapper from 'components/LinkWrapper'
 
 import * as S from './styles'
+import Typography from '@material-ui/core/Typography'
+import { Container, Grid } from '@material-ui/core'
 
 export type PageTemplateProps = {
   heading: string
@@ -9,17 +11,17 @@ export type PageTemplateProps = {
 }
 
 const PageTemplate = ({ heading, body }: PageTemplateProps) => (
-  <S.Content>
-    <LinkWrapper href="/" color="white">
-      <CloseOutline size={54} />
-    </LinkWrapper>
-
-    <S.Heading>{heading}</S.Heading>
-
-    <S.Body>
-      <div dangerouslySetInnerHTML={{ __html: body }} />
-    </S.Body>
-  </S.Content>
+  <Container maxWidth="xl">
+    <Grid direction={'row'} justify="center" alignItems="center">
+      <Typography variant={'h1'} align={'center'} color={'primary'}>
+        {heading}
+      </Typography>
+      s
+      <Typography align={'center'} color={'textSecondary'}>
+        <div dangerouslySetInnerHTML={{ __html: body }} />
+      </Typography>
+    </Grid>
+  </Container>
 )
 
 export default PageTemplate

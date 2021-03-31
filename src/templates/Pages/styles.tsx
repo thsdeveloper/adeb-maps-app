@@ -19,8 +19,8 @@ export const Heading = styled.h1`
 export const Body = styled.div`
   // serve para estilos do body
   // p, a, ul, li, blockquote
-  p {
-    font-size: var(--medium);
-    line-height: var(--medium);
-  }
+  //p {
+  //  font-size: var(--medium);
+  //  line-height: var(--medium);
+  //}
 `
